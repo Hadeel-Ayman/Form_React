@@ -1,0 +1,52 @@
+.line{
+    width: 100%;
+    height: 4px;
+    background: #C4C4C4;
+    border-radius: 4px;
+    position: relative;
+}
+.line span{
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFC107;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.PasswordStrong p{
+    position: absolute;
+    width: 282px;
+    height: 17px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFC107;
+}
+.PasswordStrong{
+    height: 21px;
+    margin: -8px 0 20px;transition: 0.3s;
+}
+.PasswordStrong.strong .line span{
+    width: 100%;
+    background-color: #1565D8;
+}
+.PasswordStrong.strong p{
+    color: #1565D8;
+}
+.PasswordStrong.medium .line span{
+    width: 70%;
+    background-color: #FFC107;
+}
+
+.PasswordStrong.medium p{
+    color: #FFC107;
+}
+.PasswordStrong.weak .line span{
+    width: 30%;
+    background-color: #dc3545;
+}
+.PasswordStrong.weak p{
+    color: #dc3545;
+}

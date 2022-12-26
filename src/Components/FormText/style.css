@@ -1,0 +1,21 @@
+.login {
+  width: 426px;
+  text-align: center;
+  margin: auto;
+}
+.title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+}
+
+.para {
+  font-weight: 400;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  line-height: 28px;
+  color: #8692a6;
+  margin-bottom: 32px;
+}
