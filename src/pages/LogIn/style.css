@@ -1,0 +1,94 @@
+.mainbox.LogIn {
+  display: flex;
+  justify-content: center;
+  width: 1340px;
+  height: 1024px;
+  margin: auto;
+  background-color: #ffffff;
+}
+.LogIn .imgBox {
+  background-size: cover;
+  width: 642px;
+  height: 1024px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LogIn .imgBox .Logo {
+  position: absolute;
+  top: 70px;
+  left: 90px;
+}
+.LogIn .form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.LogIn .back {
+  position: absolute;
+  top: 74px;
+  left: 77px;
+  cursor: pointer;
+}
+
+.LogIn .LogInImg {
+  position: absolute;
+  bottom: 97px;
+  right: 0;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+label[for="liEmail"] {
+  margin-top: 35px;
+}
+
+.logInPassword {
+  position: relative;
+}
+
+.logInPassword span {
+  position: absolute;
+  bottom: 30px;
+  right: 22px;
+  cursor: pointer;
+}
+.logInPassword.text span::before {
+  content: "";
+  width: 4px;
+  height: 35px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #8692a6;
+  position: absolute;
+  border-radius: 8px;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(30deg);
+  opacity: 0.8;
+}
+.Register {
+  margin: 0 auto;
+  position: absolute;
+  width: 430px;
+  height: 19px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #696f79;
+  font-family: "Inter", sans-serif;
+}
+.register {
+  color: #1565d8;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
