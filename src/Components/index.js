@@ -8,11 +8,15 @@ import LogInIcons from "./LogInIcons";
 import Logo from "./Logo";
 import MainText from "./MainText";
 import Or from "./Or";
+import Card from './Card';
+import Player from "./player";
 import PasswordStrong from "./PasswordStrong";
 export {
   Back,
   Button,
+  Player,
   Checkbox,
+  Card,
   Container,
   FormText,
   Input,
