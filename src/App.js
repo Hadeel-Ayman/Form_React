@@ -1,15 +1,19 @@
-import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn';
-import React from 'react';
+import { SignUp, LogIn, GamePage } from "./pages";
+import React from "react";
+import "./App.css";
+
+import { Routes, Route } from "react-router-dom";
+
 class App extends React.Component {
-  state = {
-    datashow: "LogIn",
-    Gmail: false
-  }
   render() {
     return (
       <>
-        {this.state.datashow === "LogIn" ? <LogIn app={this} Gmail={this.state.Gmail} /> : <SignUp app={this} />}
+        <Routes>
+          <Route path="/" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/GamePage" element={<GamePage />} />
+          <Route path="*" element={<h1>page not found</h1>} />
+        </Routes>
       </>
     );
   }
