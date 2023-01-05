@@ -1,0 +1,34 @@
+.card {
+    position: relative;
+}
+
+.backgroundImg {
+    border-radius: 40px;
+    width: 400px;
+    /* padding: -50px; */
+}
+
+.description {
+    position: absolute;
+    left: 23.38%;
+    right: 4%;
+    top: 65%;
+    font-family: "Arial";
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 31px;
+    text-align: right;
+    color: #ffffff;
+}
+
+.description.direction {
+    position: absolute;
+    left: 5%;
+    right: 35%;
+    top: 40%;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 31px;
+    text-align: left;
+    color: #ffffff;
+}
