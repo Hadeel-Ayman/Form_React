@@ -8,6 +8,7 @@ import {
   LogInImg,
   logInPassword,
 } from "../../images";
+
 import {
   Button,
   MainText,
@@ -18,48 +19,38 @@ import {
   Or,
   LogInIcons,
 } from "../../Components";
+import { Link } from "react-router-dom";
 const initialData = {
   gmail: {
-    liEmail: "exampleGmail@gmai.com",
-    liPassword: "example123",
+    liEmail: "Gmail@gmai.com",
+    liPassword: "123",
   },
   github: {
-    liEmail: "exampleGithub@gmai.com",
-    liPassword: "example123",
+    liEmail: "Github@gmai.com",
+    liPassword: "123",
   },
   linkedIn: {
-    liEmail: "exampleLinkedIn@gmai.com",
-    liPassword: "example123",
+    liEmail: "LinkedIn@gmai.com",
+    liPassword: "123",
   },
   twitter: {
-    liEmail: "exampleTwitter@gmai.com",
-    liPassword: "example123",
+    liEmail: "Twitter@gmai.com",
+    liPassword: "123",
   },
 };
 
 const defaults = {
   liEmail: "",
   liPassword: "",
-  passwordType: "password",
 };
 export default class LogIn extends Component {
   state = {
     liEmail: this.props.initialGmail ? initialData.gmail.liEmail : "",
     liPassword: this.props.initialGmail ? initialData.gmail.liPassword : "",
-    myData: defaults,
+    myData: initialData,
     passwordType: "password",
   };
 
-  handleLogIn = (by) => {
-    this.setState({
-      liEmail: initialData[by].liEmail,
-      liPassword: initialData[by].liPassword,
-    });
-  };
-
-  goToSignUp = () => {
-    this.props.app.setState({ datashow: "SginUp" });
-  };
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit", this.state);
@@ -71,6 +62,7 @@ export default class LogIn extends Component {
       ...defaults,
     }));
   };
+
   handleChangeInput = (e) => {
     const { value, id } = e.target;
     this.setState({ [id]: value });
@@ -93,7 +85,7 @@ export default class LogIn extends Component {
                 title="Join the game!"
                 para="Go inside the best gamers social network!"
               />
-              <div className="icons">
+              <div className="icons5">
                 <LogInIcons
                   img={GoogleIcon}
                   onclick={() => this.handleLogIn("gmail")}
@@ -146,18 +138,21 @@ export default class LogIn extends Component {
                     value={this.state.liPassword}
                   />
                 </div>
-
-                <Button
-                  className="Login"
-                  type="submit"
-                  bgColor="#1565D8"
-                  color="#fff"
-                >
-                  Login
-                </Button>
+                <Link to="/GamePage">
+                  <Button
+                    className="Login"
+                    type="submit"
+                    bgColor="#1565D8"
+                    color="#fff"
+                  >
+                    Login
+                  </Button>
+                </Link>
                 <p className="Register">
                   Don’t have an account?{" "}
-                  <span onClick={() => this.goToSignUp()} className='register'>Register</span>
+                  <Link to="/SignUp">
+                    <span className="register">Register</span>
+                  </Link>
                 </p>
               </form>
             </div>

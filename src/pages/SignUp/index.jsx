@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { GoogleIcon,Dots } from "../../images";
+import { GoogleIcon, Dots } from "../../images";
 import "./style.css";
+import * as yup from "yup";
+
 import {
   Container,
   Button,
@@ -13,20 +15,29 @@ import {
   Back,
   Checkbox,
 } from "../../Components";
+
+import { Link } from "react-router-dom";
 const defaults = {
   email: "",
   password: "",
   Repeatpassword: "",
+  checked: false,
 };
+
+const Reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})";
+
 export default class SignUp extends Component {
   state = {
+    name: "",
     email: "",
     password: "",
     Repeatpassword: "",
     myData: defaults,
     passwordStrong: "",
+    checked: false,
   };
-  validate = (value) => {
+
+  validate2 = (value) => {
     const strongRegex = new RegExp(
         "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
       ),
@@ -42,24 +53,56 @@ export default class SignUp extends Component {
     } else this.setState({ passwordStrong: "" });
   };
 
-  goToLogIn = (gmail) => {
-    this.props.app.setState({
-      initialGmail: gmail ? true : false,
-      datashow: "LogIn",
-    });
-  };
+  // goToLogIn = (gmail) => {
+  //   this.props.app.setState({
+  //     initialGmail: gmail ? true : false,
+  //     datashow: "LogIn",
+  //   });
+  // };
+  schema = yup.object().shape({
+    name: yup.string().min(6, "Name Should be more than 8").max(16).required(),
+    email: yup.string().email().required(),
+    password: yup.string().min(8).matches(Reg).required(),
+    confirmpass: yup
+      .string()
+      .oneOf([yup.ref("password"), null])
+      .required(),
+    checked: yup.boolean().oneOf([true]).required(),
+  });
+
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.password === this.state.Repeatpassword) {
-      this.setState((prevState) => ({
-        myData: {
-          email: prevState.email,
-          password: prevState.password,
+
+    this.schema
+      .validate(
+        {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          confirmpass: this.state.confirmpass,
+          checked: this.state.checked,
         },
-        ...defaults,
-      }));
-    }
+        { abortEarly: false }
+      )
+      .then(() => {
+        console.log("valid");
+        this.setState((prevState) => ({
+          myData: {
+            name: prevState.name,
+            email: prevState.email,
+            password: prevState.password,
+            confirmpass: prevState.confirmpass,
+          },
+          ...defaults,
+        }));
+      })
+      .catch((e) =>
+        this.setState({
+          error: "Something error,Please check your input fields!",
+        })
+      );
   };
+
   handleChangeInput = (e) => {
     const { value, id } = e.target;
     this.setState({ [id]: value });
@@ -110,20 +153,22 @@ export default class SignUp extends Component {
                   value={this.state.Repeatpassword}
                 />
                 <Checkbox id="agree" label="I agree to terms & conditions" />
-                <Button type="submit" className='btn'>
+                <Button type="submit" className="btn">
                   Register Account
                 </Button>
                 <Or />
                 <div className="LogInBtn">
                   <img src={GoogleIcon} alt="" className="icon" />
-                  <Button
-                    type="button"
-                    bgColor="#fff"
-                    onclick={() => this.goToLogIn(true)}
-                    color="#000"
-                  >
-                    login
-                  </Button>
+                  <Link to="/login" className="LinkLogin">
+                    <Button
+                      type="button"
+                      bgColor="#fff"
+                      // onclick={() => this.goToLogIn(true)}
+                      color="#000"
+                    >
+                      login
+                    </Button>
+                  </Link>
                 </div>
               </form>
             </div>

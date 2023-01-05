@@ -55,4 +55,9 @@
   background-color: #1565d8;
   color: #fff;
   width: 426px;
+  cursor: pointer;
+}
+.LinkLogin {
+  text-decoration: none;
+  color: #000000;
 }
